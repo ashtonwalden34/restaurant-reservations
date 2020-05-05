@@ -59,6 +59,7 @@ app.get("/reservations", function (req, res) {
 
 // Create New customer - takes in JSON input
 app.post("/api/tables", function (req, res) {
+if(tables.length < 5){
     var newTable = req.body;
 
     console.log(newTable);
@@ -66,9 +67,7 @@ app.post("/api/tables", function (req, res) {
     tables.push(newTable);
 
     res.json(newTable);
-});
-// Create New customer - takes in JSON input
-app.post("/api/waitlist", function (req, res) {
+} else {
     var newWaitlist = req.body;
 
     console.log(newWaitlist);
@@ -76,6 +75,7 @@ app.post("/api/waitlist", function (req, res) {
     waitList.push(newWaitlist);
 
     res.json(newWaitlist);
+}
 });
 
 app.listen(PORT, function () {
